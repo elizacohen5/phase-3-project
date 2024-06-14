@@ -4,7 +4,8 @@ from helpers import (
     # exit_program,
     helper_1,
     create_student,
-    exit_program
+    exit_program,
+    
 )
 
 
@@ -19,15 +20,8 @@ def main():
             create_student()
         if choice == "2":
            print("Getting all stories")
-        
-    #     choice = input("> ")
-    #     if choice == "0":
-    #         exit_program()
-    #     elif choice == "1":
-    #         helper_1()
-    #     else:
-    #         print("Invalid choice")
-
+        # else:
+        #     print("Invalid input")
 
 def menu():
     print("Please select an option:")
