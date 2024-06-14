@@ -3,14 +3,22 @@
 from helpers import (
     # exit_program,
     helper_1,
-    create_student
+    create_student,
+    exit_program
 )
 
 
 def main():
-    # while True: #TODO: check if we need it
-        print("Welcome")
-        create_student()
+    while True:
+        menu()
+        choice = input("> ")
+        if choice == "0":
+            exit_program()
+        if choice == "1": 
+            print("Creating a story")
+            create_student()
+        if choice == "2":
+           print("Getting all stories")
         
     #     choice = input("> ")
     #     if choice == "0":
@@ -21,8 +29,11 @@ def main():
     #         print("Invalid choice")
 
 
-# def menu():
-#     print("Welcome")
+def menu():
+    print("Please select an option:")
+    print("0. Exit the program")
+    print("1. Create a story")
+    print("2. Get all stories")
     
     
 #     print("Please select an option:")

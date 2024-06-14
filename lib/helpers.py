@@ -18,3 +18,4 @@ def create_student():
         print(f"Success: {student}")
     except Exception as exc:
         print("Error", exc)
+        
