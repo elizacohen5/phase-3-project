@@ -5,7 +5,7 @@ from helpers import (
     helper_1,
     create_student,
     exit_program,
-    
+    create_story
 )
 
 
@@ -17,7 +17,8 @@ def main():
             exit_program()
         if choice == "1": 
             print("Creating a story")
-            create_student()
+            student = create_student()
+            create_story(student)
         if choice == "2":
            print("Getting all stories")
         # else:
