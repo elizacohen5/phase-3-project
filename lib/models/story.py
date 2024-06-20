@@ -2,9 +2,8 @@ from .__init__ import CURSOR, CONN
 
 class Story:
 
-    def __init__(self, id, name, story):
+    def __init__(self, id, story):
         self.student_id = id
-        self.student_name = name
         self.story = story
     
     def __repr__(self):
@@ -17,7 +16,6 @@ class Story:
             CREATE TABLE IF NOT EXISTS story (
             id INTEGER PRIMARY KEY,
             student_id TEXT,
-            student_name TEXT,
             story TEXT)
         """
         CURSOR.execute(sql)
@@ -37,18 +35,18 @@ class Story:
         Update object id attribute using the primary key value of new row.
         """
         sql = """
-            INSERT INTO story (student_id, student_name, story)
-            VALUES (?, ?, ?)
+            INSERT INTO story (student_id, story)
+            VALUES (?, ?)
         """
 
-        CURSOR.execute(sql, (self.student_id, self.student_name, self.story))
+        CURSOR.execute(sql, (self.student_id, self.story))
         CONN.commit()
 
         self.id = CURSOR.lastrowid
     
     @classmethod
-    def create(cls, student_id, student_name, story):
-        story = cls(student_id, student_name, story)
+    def create(cls, student_id, story):
+        story = cls(student_id, story)
         story.save()
         return story
     
@@ -58,7 +56,9 @@ class Story:
         sql = """
             SELECT story
             FROM story
-            WHERE student_name = ?
+            JOIN students
+            ON story.student_id = students.id
+            WHERE LOWER(students.name) = ?
         """
         row = CURSOR.execute(sql, (student_name,)).fetchone()
         CONN.commit()
