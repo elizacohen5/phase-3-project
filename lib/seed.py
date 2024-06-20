@@ -13,11 +13,11 @@ def seed_database():
     s2 = Student.create("alina", 3, "SE")
     s3 = Student.create("angela", 3, "SE")
 
-    story1 = Story.create(s1.id, s1.name, """Welcome to the happy world of the Flatiron School Coding Bootcamp, where every day feels like a networking event orchestrated by 
+    story1 = Story.create(s1.id, """Welcome to the happy world of the Flatiron School Coding Bootcamp, where every day feels like a networking event orchestrated by 
 Targaryen!""")
-    story2 = Story.create(s2.id, s2.name,"""Welcome to the sad world of the Flatiron School Coding Bootcamp, where every day feels like a sleepover orchestrated by 
+    story2 = Story.create(s2.id, """Welcome to the sad world of the Flatiron School Coding Bootcamp, where every day feels like a sleepover orchestrated by 
 The White Walker!""")
-    story3 = Story.create(s3.id, s3.name, """Welcome to the exciting world of the Flatiron School Coding Bootcamp, where every day feels like a marathon orchestrated by 
+    story3 = Story.create(s3.id, """Welcome to the exciting world of the Flatiron School Coding Bootcamp, where every day feels like a marathon orchestrated by 
 Lannister!""")
 
 
