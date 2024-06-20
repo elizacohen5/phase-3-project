@@ -63,3 +63,4 @@ class Story:
         row = CURSOR.execute(sql, (student_name,)).fetchone()
         CONN.commit()
         print(row[0])
+    

@@ -52,7 +52,6 @@ infamous {error} error. After four hours of unsuccesfully debugging the same err
     Story.create(student.id, result)
 
 def get_student_by_name():
-    typewriter_effect("Please select a name from the following list of students:")
     Student.get_students()
     name = typewriter_input("Please enter a name from the student list: ").lower()
     
