@@ -1,13 +1,12 @@
 from .__init__ import CURSOR, CONN
 
 class Student:
-    
-    # all = {}
-
+    names = []
     def __init__(self, name, phase, program):
         self.name = name
         self.phase = phase
         self.program = program
+        Student.names.append(name)
 
     def __repr__(self):
         return f"<Student {self.name} {self.phase} {self.program}>"
@@ -40,8 +39,9 @@ class Student:
     
     @program.setter
     def program(self, program):
-        if isinstance(program, str): # add SE and DS checks
-            self._program = program
+        if isinstance(program, str):
+            if(program == "SE" or program == "DS"):
+                self._program = program
         else:
             raise ValueError("Program must be 'SE' or 'DS")
 
@@ -67,7 +67,6 @@ class Student:
         CURSOR.execute(sql)
         CONN.commit()
 
-    ## TODO: ask ben why we need to separate save and create
     def save(self):
         """ Insert a new row with the name, phase, and program values of the current Student instance.
         Update object id attribute using the primary key value of new row.
@@ -81,7 +80,6 @@ class Student:
         CONN.commit()
 
         self.id = CURSOR.lastrowid
-        # type(self).all[self.id] = self ## TODO: check functionality
 
     @classmethod
     def create(cls, name, phase, program):
@@ -89,8 +87,18 @@ class Student:
         student.save()
         return student
     
-    # add methods to find by phase, program
-
-
-s1 = Student('angela', 3, 'SE')
-print(s1)
+    @classmethod
+    def get_students(cls):
+        
+        sql = """
+            SELECT name
+            FROM students
+            """
+        
+        rows = CURSOR.execute(sql).fetchall()
+        CONN.commit()
+       
+        for name in rows:
+            print(name[0])
+           
+      
